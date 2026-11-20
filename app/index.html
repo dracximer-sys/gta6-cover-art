@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunset Cover Studio — Make your own GTA-style cover art</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">SC</span>
+    <div>
+      <h1>Sunset Cover Studio</h1>
+      <p>Turn any photo into GTA-style cover art — 100% offline, your photos never leave this machine.</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="btn-demo" class="btn ghost" type="button">Load demo photo</button>
+    <button id="btn-export" class="btn primary" type="button">Export PNG</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="controls" aria-label="Cover controls">
+    <div class="card">
+      <h2>1 · Photos</h2>
+      <p class="hint">Upload up to 4 photos. Click a panel on the preview to select it, then drag to pan and use the zoom slider.</p>
+      <div class="photo-rows" id="photo-rows"></div>
+      <div class="row">
+        <label class="file-btn">Upload photo
+          <input type="file" id="file-input" accept="image/*" hidden>
+        </label>
+        <button id="btn-clear-photos" class="btn ghost small" type="button">Clear all</button>
+      </div>
+      <p class="hint" id="selected-label">Selected panel: Hero (1)</p>
+      <label class="slider-label">Zoom
+        <input type="range" id="zoom" min="100" max="300" value="100">
+        <span id="zoom-val">100%</span>
+      </label>
+    </div>
+
+    <div class="card">
+      <h2>2 · Layout</h2>
+      <div class="seg" id="layout-seg" role="group" aria-label="Panel layout">
+        <button type="button" data-layout="hero3" class="active">Hero + 2</button>
+        <button type="button" data-layout="hero2">Hero + 1</button>
+        <button type="button" data-layout="grid4">4 panels</button>
+      </div>
+      <h2>3 · Palette</h2>
+      <div class="seg" id="palette-seg" role="group" aria-label="Colour palette">
+        <button type="button" data-palette="sunset" class="active">Miami Sunset</button>
+        <button type="button" data-palette="neon">Neon Night</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>4 · Lettering</h2>
+      <label class="field">Title
+        <input type="text" id="in-title" value="GRAND SUNSET" maxlength="24" spellcheck="false">
+      </label>
+      <label class="field">Numeral
+        <input type="text" id="in-numeral" value="VI" maxlength="4" spellcheck="false">
+      </label>
+      <label class="field">Tagline
+        <input type="text" id="in-tagline" value="A SUNSET CITY STORY" maxlength="48" spellcheck="false">
+      </label>
+      <label class="field">Location
+        <input type="text" id="in-location" value="SUNSET CITY" maxlength="24" spellcheck="false">
+      </label>
+    </div>
+
+    <div class="card">
+      <h2>5 · Export</h2>
+      <div class="seg" id="size-seg" role="group" aria-label="Export size">
+        <button type="button" data-size="1080x1080" class="active">1080 × 1080</button>
+        <button type="button" data-size="1080x1350">1080 × 1350</button>
+        <button type="button" data-size="1920x1080">1920 × 1080</button>
+      </div>
+      <button id="btn-export-2" class="btn primary block" type="button">Export PNG</button>
+      <p class="hint" id="export-status">Ready. Export is instant and stays on your device.</p>
+    </div>
+
+    <p class="fineprint">A parody cover maker. Not affiliated with Rockstar Games. No logos, artwork or fonts from GTA are used — all art and lettering here are original. Photos you upload are processed locally in your browser and never uploaded anywhere.</p>
+  </section>
+
+  <section class="preview" aria-label="Cover preview">
+    <div class="canvas-wrap">
+      <canvas id="preview" width="1080" height="1080"></canvas>
+      <p class="preview-caption">Preview — drag a panel to pan its photo · scroll to zoom · click a panel to select it</p>
+    </div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
